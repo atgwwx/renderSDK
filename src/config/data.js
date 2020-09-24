@@ -1,7 +1,7 @@
 
 export default {
     action:{
-        source:'return {add(ctx){console.log(ctx);ctx.setState({name:"董伦涛"})}}'
+        source:`return { add(ctx) { ctx.setState({name:"董伦涛"})} }`
     },
     store: {
         name:'xiaohong',

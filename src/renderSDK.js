@@ -2,25 +2,27 @@ import React from 'react';
 import Container from './components/Container'
 import Button from './components/Button'
 import Mustache from 'mustache';
+import _ from 'lodash'
+
 const ComponentsMap = {
     'Container': Container,
     'Button': Button
 }
 
 window.EASY = {};
-Mustache.templateCache = undefined;
+
 function render(config, store) {
-    let props = config.props;
+    let props = Object.assign({}, config.props);
+    
     for (const key in props) {
         if (props.hasOwnProperty(key)) {
             const element = props[key];
             if (typeof element === 'string') {
-                console.log('name:',store.name)
                 props[key] = Mustache.render(element, store);
-                console.log(props[key])
             }
         }
     }
+    
     return React.createElement(
         ComponentsMap[config.component],
         props,
@@ -46,11 +48,9 @@ class  SDK extends React.Component {
 
     render() {
         const store = Object.assign({}, this.state);
-        const {name} = store;
         let cps = render(this.props.layout, store);
         return <>
             {cps}
-            {name}
         </>
     }
 }

@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+可视化搭建，前端渲染SDK
 
 ## Available Scripts
 
